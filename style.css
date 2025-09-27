@@ -1,0 +1,353 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, red, black);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+  }
+  
+  /* Layout Container */
+  .container {
+    display: flex;
+    align-items: flex-start;
+    padding: 30px;
+    gap: 30px;
+  }
+  
+  /* Left Side Poster */
+  .left img {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  }
+  
+  /* Right Side Info */
+  .right {
+    max-width: 600px;
+  }
+  
+  .right h1 {
+    margin: 0 0 10px;
+  }
+  
+  .right p {
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #1db954;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #17a34a;
+  }
+  
+  /* Video Page */
+  .video-page {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .video-container {
+    display: inline-block;
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+  }
+  /* Progress Bar & Time */
+    .progress-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0;
+        width: 100%;
+        max-width: 800px;
+    }
+  
+  #progressBar {
+    flex: 1;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  #timeDisplay {
+    min-width: 90px;
+    font-size: 14px;
+    color: #fff;
+    text-align: right;
+  }
+  
+  .back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    color: #1db954;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .back-btn:hover {
+    text-decoration: underline;
+  }
+  
+  
+/* Theater Mode */
+.video-container.theater {
+    width: 95%;
+    max-width: 1200px;
+  }
+  
+  .video-container.theater video {
+    width: 100%;
+  }
+  
+  /* Custom Controls */
+  .controls {
+    margin-top: 15px;
+  }
+  
+  .controls button {
+    background: #1db954;
+    border: none;
+    padding: 10px 18px;
+    margin: 0 5px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .controls button:hover {
+    background: #17a34a;
+  }
+
+
+/* Wrapper for positioning volume inside video */
+.video-wrapper {
+    position: absolute;
+    display: block;
+  }
+  
+  /* Volume control (bottom-right) */
+  .volume-wrapper {
+    position: absolute;
+    bottom: 160px;             /* adjust this to sit just above the progress bar */
+    right: 20px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  /* Volume icon */
+  .volume-icon {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 5px;
+    user-select: none;
+  }
+  
+  /* Hidden vertical slider */
+  #volumeBar {
+    writing-mode: bt-lr;              /* makes slider vertical */
+    -webkit-appearance: slider-vertical;
+    width: 8px;
+    height: 100px;
+    margin-bottom: 5px;
+    display: block;                    /* hidden until hover */
+  }
+  
+  /* Show slider on hover */
+  .volume-wrapper:hover #volumeBar {
+    display: block;
+  }
+
+
+  /* -------------------- Mobile View -------------------- */
+@media (max-width: 600px) {
+
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .left img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .right {
+    width: 100%;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .right h1 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .right p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  button {
+    background-color: #1db954;
+    color: white;
+    border: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+
+  /* Optional: center buttons below content */
+  .right button {
+    display: block;
+    margin: 10px auto 0 auto;
+  }
+
+
+
+  /* Container */
+  .video-container {
+    width: 90%;
+    padding: 12px;
+    border-radius: 12px;
+    background: #1c1c1c;        /* cleaner dark background */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* Title */
+  h2 {
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  /* Video player */
+  video {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  /* Volume icon above progress bar */
+  .volume-wrapper {
+    position: absolute;          /* removes floating */
+    display: flex;
+    bottom: 170px;             /* adjust this to sit just above the progress bar */
+    right: 20px;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-bottom: 10px;       /* sits above progress bar */
+  }
+
+  .volume-wrapper .volume-icon {
+    font-size: 10px;
+    color: #00d9ff;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+
+  #volumeBar {
+    writing-mode: bt-lr;              /* makes slider vertical */
+    -webkit-appearance: slider-vertical;
+    width: 5px;
+    height: 50px;
+    margin-bottom: 5px;
+    display: none; 
+    accent-color: #00d9ff;
+  }
+
+/* Show slider on hover */
+.volume-wrapper:hover #volumeBar {
+  display: block;
+}
+
+  /* Progress bar section */
+  .progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 5px 0;
+  }
+
+  #progressBar {
+    flex: 1;
+    height: 4px;
+    accent-color: #00d9ff;
+  }
+
+  #timeDisplay {
+    font-size: 12px;
+    color: #ccc;
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* Controls — compact buttons in 2 rows */
+  .controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .controls button {
+    background: #4ade80;
+    border: none;
+    padding: 4px 6px;
+    font-size: 10px;
+    color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin: 3px;
+  }
+
+  .controls button:hover {
+    background: #00b4cc;
+  }
+
+  /* Back button below controls */
+  .back-btn {
+    display: block;
+    margin: 12px auto 0 auto;
+    text-align: center;
+    font-size: 13px;
+    color: #4ade80;         /* soft green */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .back-btn:hover {
+    text-decoration: underline;
+  }
+}

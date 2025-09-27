@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left: Movie Banner -->
+        <div class="left">
+          <img src="Amaran.jpg" alt="Amaran Poster">
+        </div>
+    
+        <!-- Right: Movie Details -->
+        <div class="right">
+          <h1>Amaran (2024)</h1>
+          <p><strong> Action/Adventure• 1h 58m</strong></p>
+          <p>
+            A true-life story of Major Mukund Varadarajan, a commissioned officer in the Indian Army`s Rajput Regiment, 
+            who was posthumously awarded the Ashok Chakra for his valor during a counterterrorism operation while on deputation to the 44th Rashtriya Rifles battalion in Jammu and Kashmir.
+          </p>
+          <button id="playBtn">▶ Play</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("playBtn").addEventListener("click", function() {
+          window.location.href = "video.html"; // Redirect to video page
+        });
+      </script>
+</body>
+</html>

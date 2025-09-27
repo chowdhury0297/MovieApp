@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mufasa Trailer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="video-page">
+  <div class="video-container">
+    <div class="video-container" id="videoContainer">
+        <h2>Amaran (2024)</h2>
+    
+        <!-- Video -->
+        <video id="myVideo" width="800">
+          <source src="https://test-rupak.s3.ap-south-1.amazonaws.com/Amaran.mkv" type="video/mp4">
+          Your browser does not support video playback.
+        </video>
+    
+        <!-- Progress & Time -->
+        <div class="progress-container">
+            <input type="range" id="progressBar" value="0" min="0" step="0.1">
+            <div id="timeDisplay">00:00 / 00:00</div>
+         </div>
+        <!-- Custom Controls -->
+        <div class="controls">
+          <button onclick="skip(-5)">⏪ Back 5s</button>
+          <button onclick="togglePlay()">▶ Play/Pause</button>
+          <button onclick="skip(5)">⏩ Forward 5s</button>
+          <button onclick="toggleTheater()">🎬 Theater Mode</button>
+          <button onclick="toggleFullscreen()">⛶ Fullscreen</button>
+          <!-- Volume Control -->
+          <div class="volume-wrapper">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volumeBar" min="0" max="1" step="0.05" value="1" orient="vertical">
+          </div>
+        </div>
+    
+        <br>
+        <a href="index.html" class="back-btn">⬅ Back</a>
+    
+  </div>
+
+  <script>
+    const video = document.getElementById("myVideo");
+    const container = document.getElementById("videoContainer");
+    const progressBar = document.getElementById("progressBar");
+    const timeDisplay = document.getElementById("timeDisplay");
+    const volumeBar = document.getElementById("volumeBar")
+
+    // Format time as mm:ss
+    function formatTime(time) {
+      let minutes = Math.floor(time / 60);
+      let seconds = Math.floor(time % 60);
+      if (minutes < 10) minutes = "0" + minutes;
+      if (seconds < 10) seconds = "0" + seconds;
+      return minutes + ":" + seconds;
+    }
+    // Update progress bar and time
+    video.addEventListener("timeupdate", () => {
+      progressBar.value = video.currentTime;
+      timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+    });
+
+    // Set max value when metadata is loaded
+    video.addEventListener("loadedmetadata", () => {
+      progressBar.max = video.duration;
+      timeDisplay.textContent = `00:00 / ${formatTime(video.duration)}`;
+    });
+
+    // Seek when user moves progress bar
+    progressBar.addEventListener("input", () => {
+      video.currentTime = progressBar.value;
+    });
+
+    
+    // Volume Control
+    volumeBar.addEventListener("input", () => {
+      video.volume = volumeBar.value;
+    });
+
+
+
+    // Play / Pause toggle
+    function togglePlay() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+
+    // Skip forward/backward
+    function skip(seconds) {
+      video.currentTime += seconds;
+    }
+
+    // Toggle Theater Mode
+    function toggleTheater() {
+      container.classList.toggle("theater");
+    }
+
+    // Toggle Fullscreen
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        // Request fullscreen on the VIDEO itself
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) { // Safari
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { // IE11
+          video.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { // Safari
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE11
+          document.msExitFullscreen();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
